@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Autores</title>
+</head>
+<body>
+<h1>Autores Cadastrados</h1>
+
+<a th:href="@{/autores/novo}">+ Cadastrar Novo Autor</a>
+<br><br>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Idade</th> <!-- Cabeçalho atualizado para Idade -->
+        <th>E-mail</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- O th:each faz um loop ("for") na lista de autores vinda do DB -->
+    <tr th:each="autor : ${autores}">
+        <td th:text="${autor.id}"></td>
+        <td th:text="${autor.nome}"></td>
+        <td th:text="${autor.idade}"></td> <!-- Valor atualizado para pegar a idade -->
+        <td th:text="${autor.email}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+<a th:href="@{/livros}">Ir para Livros</a>
+</body>
+</html>

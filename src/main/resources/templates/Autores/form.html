@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Novo Autor</title>
+</head>
+<body>
+<h1>Cadastrar Autor</h1>
+
+<!-- O th:object="${autor}" faz o link direto com a Model Autor -->
+<form th:object="${autor}" th:action="@{/autores}" method="post">
+
+    <label>Nome:</label>
+    <input type="text" th:field="*{nome}" required />
+    <br><br>
+
+    <!-- Adicionado o campo Idade (que substituiu a nacionalidade) -->
+    <label>Idade:</label>
+    <input type="text" th:field="*{idade}" />
+    <br><br>
+
+    <label>E-mail:</label>
+    <input type="email" th:field="*{email}" />
+    <br><br>
+
+    <button type="submit">Salvar</button>
+</form>
+
+<br>
+<a th:href="@{/autores}">Voltar para a lista</a>
+</body>
+</html>

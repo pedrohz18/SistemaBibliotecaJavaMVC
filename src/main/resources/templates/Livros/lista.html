@@ -1,0 +1,21 @@
+<table>
+    <thead>
+    <tr>
+        <th>Título</th>
+        <th>Autor</th>
+        <th>ISBN</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- status.index captura a posição do item no ArrayList -->
+    <tr th:each="livro, status : ${livros}">
+        <td th:text="${livro.titulo}"></td>
+        <td th:text="${livro.autor}"></td>
+        <td th:text="${livro.isbn}"></td>
+        <td>
+            <a th:href="@{/livros/excluir/{idx}(idx=${status.index})}">Excluir</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
