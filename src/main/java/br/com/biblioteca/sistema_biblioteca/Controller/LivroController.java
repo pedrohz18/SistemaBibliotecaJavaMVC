@@ -4,10 +4,7 @@ import br.com.biblioteca.sistema_biblioteca.Model.Livro;
 import br.com.biblioteca.sistema_biblioteca.Repository.LivroRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/livros")
@@ -48,4 +45,12 @@ public class LivroController {
     //Spring Vai Preencher o Livro com oque veio no Formulário de Cadastro
     return "redirect:/livros";
     }
+
+    // Remoção de Livro do DB
+    @GetMapping("/excluir/{id}")
+    public String excluir(@PathVariable Long id) {
+        repository.deleteById(id);
+        return "redirect:/livros";
+    }
+
 }

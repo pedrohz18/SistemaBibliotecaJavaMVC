@@ -4,10 +4,7 @@ import br.com.biblioteca.sistema_biblioteca.Model.Autor;
 import br.com.biblioteca.sistema_biblioteca.Repository.AutorRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/autores")
@@ -39,4 +36,12 @@ public class AutorController {
         repository.save(autor);
         return "redirect:/autores";
     }
+
+    // Remoção de AUtor do DB
+    @GetMapping("/excluir/{id}")
+    public String excluir(@PathVariable Long id) {
+        repository.deleteById(id);
+        return "redirect:/autores";
+    }
+
 }
